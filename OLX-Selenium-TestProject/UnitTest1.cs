@@ -1,15 +1,36 @@
-﻿namespace OLX_Selenium_TestProject;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
-public class Tests
-{
-    [SetUp]
-    public void Setup()
-    {
-    }
+namespace OLX_Selenium_TestProject;
 
-    [Test]
-    public void Test1()
+[TestFixture]
+    public class WebDriverTests
     {
-        Assert.Pass();
+        private IWebDriver _driver;
+
+        [SetUp]
+        public void Setup()
+        {
+            _driver = new ChromeDriver();
+            _driver.Manage().Window.Maximize();
+        }
+
+        [Test]
+        public void VerifyGoogleTitle()
+        {
+            // Navigate to Google
+            _driver.Navigate().GoToUrl("https://www.google.com");
+
+            // Verify the page title
+            Assert.That(_driver.Title, Is.EqualTo("Google"));
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            // Close the browser
+            _driver.Quit();
+            _driver.Dispose();
+        }
     }
-}

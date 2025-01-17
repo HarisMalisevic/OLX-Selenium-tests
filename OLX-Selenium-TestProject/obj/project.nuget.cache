@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CBqFrFfdeUo=",
+  "dgSpecHash": "fTnMPh7VML4=",
   "success": true,
   "projectFilePath": "C:\\ETF\\Verifikacija i validacija softvera\\3. projektni zadatak\\OLX-Selenium-tests\\OLX-Selenium-TestProject\\OLX-Selenium-TestProject.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,8 @@
     "C:\\Users\\haris\\.nuget\\packages\\nunit\\4.2.2\\nunit.4.2.2.nupkg.sha512",
     "C:\\Users\\haris\\.nuget\\packages\\nunit.analyzers\\4.4.0\\nunit.analyzers.4.4.0.nupkg.sha512",
     "C:\\Users\\haris\\.nuget\\packages\\nunit3testadapter\\4.6.0\\nunit3testadapter.4.6.0.nupkg.sha512",
+    "C:\\Users\\haris\\.nuget\\packages\\selenium.webdriver\\4.27.0\\selenium.webdriver.4.27.0.nupkg.sha512",
+    "C:\\Users\\haris\\.nuget\\packages\\selenium.webdriver.chromedriver\\73.0.3683.68\\selenium.webdriver.chromedriver.73.0.3683.68.nupkg.sha512",
     "C:\\Users\\haris\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512"
   ],
   "logs": []
