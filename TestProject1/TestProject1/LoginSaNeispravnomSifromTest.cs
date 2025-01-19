@@ -38,12 +38,15 @@ namespace TestProject1
     {
             driver.Navigate().GoToUrl("https://olx.ba/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            Thread.Sleep(5000); // Pause for 5 seconds to allow all elements to load
+            Thread.Sleep(3000); // Pause for 5 seconds to allow all elements to load
             driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
             driver.FindElement(By.LinkText("Prijavi se")).Click();
+            Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
             driver.FindElement(By.Name("username")).SendKeys("vvs.fhkmm@gmail.com");
             driver.FindElement(By.Name("password")).SendKeys("1234");
             driver.FindElement(By.CssSelector("button[data-v-3de08799]")).Click();
+            Thread.Sleep(2000);
+            Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
             driver.Close();
         }
   }
