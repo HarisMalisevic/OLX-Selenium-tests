@@ -34,7 +34,7 @@ namespace TestProject1
       driver.Dispose();
     }
     [Test]
-    public void loginSaIspravnomSifrom()
+    public void LoginSaIspravnomSifrom()
     {
       driver.Navigate().GoToUrl("https://olx.ba/");
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);

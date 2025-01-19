@@ -2,7 +2,7 @@ using OpenQA.Selenium;
 
 namespace TestProject1
 {
-    public class Tests
+    public class PristupPocetnojStraniciTest
     {
         private IWebDriver driver;
 
@@ -21,7 +21,7 @@ namespace TestProject1
         }
 
         [Test]
-        public void Test1()
+        public void PristupPocetnojStranici()
         {
             driver.Navigate().GoToUrl("https://olx.ba");
             Thread.Sleep(5000); // Pause for 5 seconds to allow all elements to load

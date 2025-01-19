@@ -34,7 +34,7 @@ namespace TestProject1
       driver.Dispose();
     }
     [Test]
-    public void pregledNekretninaNaMapi()
+    public void PregledNekretninaNaMapi()
     {
       driver.Navigate().GoToUrl("https://olx.ba/");
       driver.Manage().Window.Maximize();

@@ -35,7 +35,7 @@ namespace TestProject1
             driver.Dispose();
         }
         [Test]
-        public void povratakNaPocetnuStranicuSaSekcijeKategorije()
+        public void PovratakNaPocetnuStranicuSaSekcijeKategorije()
         {
             driver.Navigate().GoToUrl("https://olx.ba/");
             driver.Manage().Window.Maximize();
