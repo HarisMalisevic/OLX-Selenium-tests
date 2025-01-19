@@ -34,7 +34,7 @@ namespace TestProject1
       driver.Dispose();
     }
     [Test]
-    public void NeispravanLogin_IspravnaSifra_IspravnoKorisnickoIme()
+    public void IspravanLogin_IspravnaSifra_IspravnoKorisnickoIme()
     {
       driver.Navigate().GoToUrl("https://olx.ba/");
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
