@@ -38,10 +38,13 @@ namespace TestProject1
     {
       driver.Navigate().GoToUrl("https://olx.ba/");
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-      Thread.Sleep(5000); // Pause for 5 seconds to allow all elements to load
+      Thread.Sleep(3000); // Pause for 3 seconds to allow all elements to load
       driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
       driver.FindElement(By.CssSelector(".main-category-icon > img")).Click();
+      Assert.That(driver.Url, Is.EqualTo("https://olx.ba/kategorije"));
       driver.FindElement(By.LinkText("Automobili")).Click();
+      Thread.Sleep(1000);
+      Assert.That(driver.Url, Is.EqualTo("https://olx.ba/pretraga?category_id=18"));
       driver.Close();
     }
   }
