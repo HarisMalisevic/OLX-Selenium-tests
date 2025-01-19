@@ -40,8 +40,10 @@ namespace TestProject1
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
       Thread.Sleep(5000); // Pause for 5 seconds to allow all elements to load
       driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
-      driver.FindElement(By.CssSelector(".main-category-icon > img")).Click();
-      driver.FindElement(By.LinkText("Automobili")).Click();
+      driver.FindElement(By.LinkText("Prijavi se")).Click();
+      driver.FindElement(By.Name("username")).SendKeys("vvs.fhkmm@gmail.com");
+      driver.FindElement(By.Name("password")).SendKeys("VVSfhkmm2024#");
+      driver.FindElement(By.CssSelector("button[data-v-3de08799]")).Click();
       driver.Close();
     }
   }
