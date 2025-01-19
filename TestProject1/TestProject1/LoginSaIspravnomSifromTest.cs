@@ -11,6 +11,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Interactions;
 using NUnit.Framework;
+using NUnit.Framework.Legacy;
 
 namespace TestProject1
 {
@@ -41,9 +42,12 @@ namespace TestProject1
       Thread.Sleep(5000); // Pause for 5 seconds to allow all elements to load
       driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
       driver.FindElement(By.LinkText("Prijavi se")).Click();
+      Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
       driver.FindElement(By.Name("username")).SendKeys("vvs.fhkmm@gmail.com");
       driver.FindElement(By.Name("password")).SendKeys("VVSfhkmm2024#");
       driver.FindElement(By.CssSelector("button[data-v-3de08799]")).Click();
+      Thread.Sleep(5000);
+      Assert.That(driver.Url, Is.EqualTo("https://olx.ba/"));
       driver.Close();
     }
   }
