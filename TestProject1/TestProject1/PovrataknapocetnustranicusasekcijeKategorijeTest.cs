@@ -16,7 +16,7 @@ using OpenQA.Selenium.BiDi.Modules.BrowsingContext;
 namespace TestProject1
 {
     [TestFixture]
-    public class PovrataknapocetnustranicusasekcijeKategorijeTest
+    public class PovratakNaPocetnuStranicuSaSekcijeKategorijeTest
     {
         private IWebDriver driver;
         public IDictionary<string, object> vars { get; private set; }
@@ -35,7 +35,7 @@ namespace TestProject1
             driver.Dispose();
         }
         [Test]
-        public void povrataknapocetnustranicusasekcijeKategorije()
+        public void povratakNaPocetnuStranicuSaSekcijeKategorije()
         {
             driver.Navigate().GoToUrl("https://olx.ba/");
             driver.Manage().Window.Maximize();
@@ -43,9 +43,13 @@ namespace TestProject1
             driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
             driver.FindElement(By.CssSelector(".main-category-icon")).Click();
             Thread.Sleep(2000);
+            Assert.That(driver.Url, Is.EqualTo("https://olx.ba/kategorije"));
             js.ExecuteScript("window.scrollTo(0,6311.2001953125)");
-            driver.FindElement(By.LinkText("Pirotehnika")).Click();
-            js.ExecuteScript("window.scrollTo(0,1968)");
+            driver.FindElement(By.CssSelector(".olx-logo[data-v-64994449]")).Click();
+            Thread.Sleep(1000);
+            Assert.That(driver.Url, Is.EqualTo("https://olx.ba/"));
+            long scrollPosition = (long)js.ExecuteScript("return window.scrollY || document.documentElement.scrollTop;");
+            Assert.That(scrollPosition, Is.EqualTo(0));
             driver.Close();
         }
     }

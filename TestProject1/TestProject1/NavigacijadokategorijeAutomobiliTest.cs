@@ -15,7 +15,7 @@ using NUnit.Framework;
 namespace TestProject1
 {
   [TestFixture]
-  public class NavigacijadokategorijeAutomobiliTest
+  public class NavigacijaDoKategorijeAutomobiliTest
   {
     private IWebDriver driver;
     public IDictionary<string, object> vars { get; private set; }
@@ -34,7 +34,7 @@ namespace TestProject1
       driver.Dispose();
     }
     [Test]
-    public void navigacijadokategorijeAutomobili()
+    public void navigacijaDoKategorijeAutomobili()
     {
       driver.Navigate().GoToUrl("https://olx.ba/");
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);

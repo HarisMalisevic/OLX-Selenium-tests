@@ -38,7 +38,7 @@ namespace TestProject1
     {
             driver.Navigate().GoToUrl("https://olx.ba/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            Thread.Sleep(3000); // Pause for 5 seconds to allow all elements to load
+            Thread.Sleep(3000); // Pause for 3 seconds to allow all elements to load
             driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
             driver.FindElement(By.LinkText("Prijavi se")).Click();
             Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
