@@ -15,7 +15,7 @@ using NUnit.Framework;
 namespace TestProject1
 {
   [TestFixture]
-  public class LoginSaIspravnomSifromTest
+  public class IspravanLoginTest
   {
     private IWebDriver driver;
     public IDictionary<string, object> vars { get; private set; }
@@ -34,7 +34,7 @@ namespace TestProject1
       driver.Dispose();
     }
     [Test]
-    public void LoginSaIspravnomSifrom()
+    public void NeispravanLogin_IspravnaSifra_IspravnoKorisnickoIme()
     {
       driver.Navigate().GoToUrl("https://olx.ba/");
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
