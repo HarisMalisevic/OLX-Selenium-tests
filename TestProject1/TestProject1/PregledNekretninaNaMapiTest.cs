@@ -15,7 +15,7 @@ using NUnit.Framework;
 namespace TestProject1
 {
   [TestFixture]
-  public class PregledNekretninaNaMapi
+  public class PregledNekretninaNaMapiTest
   {
     private IWebDriver driver;
     public IDictionary<string, object> vars { get; private set; }
@@ -34,14 +34,18 @@ namespace TestProject1
       driver.Dispose();
     }
     [Test]
-    public void navigacijadokategorijeAutomobili()
+    public void pregledNekretninaNaMapi()
     {
       driver.Navigate().GoToUrl("https://olx.ba/");
+      driver.Manage().Window.Maximize();
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
       Thread.Sleep(5000); // Pause for 5 seconds to allow all elements to load
       driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
       driver.FindElement(By.CssSelector(".main-category-icon > img")).Click();
-      driver.FindElement(By.LinkText("Automobili")).Click();
+      Thread.Sleep(1000);
+      driver.FindElement(By.LinkText("Nekretnine")).Click();
+      Thread.Sleep(1000);
+      driver.FindElement(By.CssSelector(".switch[data-v-407cfefd]")).Click();
       driver.Close();
     }
   }
