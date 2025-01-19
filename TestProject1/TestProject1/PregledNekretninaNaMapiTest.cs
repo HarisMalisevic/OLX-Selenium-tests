@@ -39,13 +39,14 @@ namespace TestProject1
       driver.Navigate().GoToUrl("https://olx.ba/");
       driver.Manage().Window.Maximize();
       driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-      Thread.Sleep(5000); // Pause for 5 seconds to allow all elements to load
+      Thread.Sleep(3000); // Pause for 3 seconds to allow all elements to load
       driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
-      driver.FindElement(By.CssSelector(".main-category-icon > img")).Click();
-      Thread.Sleep(1000);
       driver.FindElement(By.LinkText("Nekretnine")).Click();
       Thread.Sleep(1000);
-      driver.FindElement(By.CssSelector(".switch[data-v-407cfefd]")).Click();
+      Assert.That(driver.Url, Is.EqualTo("https://olx.ba/nekretnine"));
+      driver.FindElement(By.CssSelector(".mt-lg.ml-sm")).Click();
+      Thread.Sleep(5000);
+      Assert.That(driver.Url, Is.EqualTo("https://olx.ba/pretraga?category_id=23&show_map=1"));
       driver.Close();
     }
   }
