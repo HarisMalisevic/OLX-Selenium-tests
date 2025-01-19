@@ -14,73 +14,48 @@ using NUnit.Framework;
 
 namespace TestProject1
 {
-  [TestFixture]
-  public class NeispravanLoginTest
-  {
-    private IWebDriver driver;
-    public IDictionary<string, object> vars { get; private set; }
-    private IJavaScriptExecutor js;
-    [SetUp]
-    public void SetUp()
+    [TestFixture]
+    public class NeispravanLoginTest
     {
-      driver = new FirefoxDriver();
-      js = (IJavaScriptExecutor)driver;
-      vars = new Dictionary<string, object>();
-    }
-    [TearDown]
-    protected void TearDown()
-    {
-      driver.Quit();
-      driver.Dispose();
-    }
-    [Test]
-    public void NeispravanLogin_NeispravnaSifra_IspravnoKorisnickoIme()
-    {
-            driver.Navigate().GoToUrl("https://olx.ba/");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            Thread.Sleep(3000); // Pause for 3 seconds to allow all elements to load
-            driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
-            driver.FindElement(By.LinkText("Prijavi se")).Click();
-            Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
-            driver.FindElement(By.Name("username")).SendKeys("vvs.fhkmm@gmail.com");
-            driver.FindElement(By.Name("password")).SendKeys("1234");
-            driver.FindElement(By.CssSelector("button[data-v-3de08799]")).Click();
-            Thread.Sleep(2000);
-            Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
-            driver.Close();
+        private IWebDriver driver;
+        public IDictionary<string, object> vars { get; private set; }
+        private IJavaScriptExecutor js;
+        [SetUp]
+        public void SetUp()
+        {
+            driver = new FirefoxDriver();
+            js = (IJavaScriptExecutor)driver;
+            vars = new Dictionary<string, object>();
+        }
+        [TearDown]
+        protected void TearDown()
+        {
+            driver.Quit();
+            driver.Dispose();
         }
 
-    [Test]
-    public void NeispravanLogin_IspravnaSifra_NeispravnoKorisnickoIme()
-    {
+        [TestCase("vvs.fhkmm@gmail.com", "1234", TestName = "NeispravanLogin_NeispravnaSifra_IspravnoKorisnickoIme")]
+        [TestCase("nepostojeciEmail@gmail.com", "VVSfhkmm2024", TestName = "NeispravanLogin_IspravnaSifra_NeispravnoKorisnickoIme")]
+        [TestCase("nepostojeciEmail@gmail.com", "1234", TestName = "NeispravanLogin_NeispravnaSifra_NeispravnoKorisnickoIme")]
+        public void NeispravanLogin(string korisnickoIme, string sifra)
+        {
             driver.Navigate().GoToUrl("https://olx.ba/");
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
             Thread.Sleep(3000); // Pause for 3 seconds to allow all elements to load
-            driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
-            driver.FindElement(By.LinkText("Prijavi se")).Click();
-            Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
-            driver.FindElement(By.Name("username")).SendKeys("nepostojeciEmail@gmail.com");
-            driver.FindElement(By.Name("password")).SendKeys("VVSfhkmm2024");
-            driver.FindElement(By.CssSelector("button[data-v-3de08799]")).Click();
-            Thread.Sleep(2000);
-            Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
-            driver.Close();
-        }
 
-    [Test]
-    public void NeispravanLogin_NeispravnaSifra_NeispravnoKorisnickoIme()
-    {
-            driver.Navigate().GoToUrl("https://olx.ba/");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            Thread.Sleep(3000); // Pause for 3 seconds to allow all elements to load
             driver.FindElement(By.CssSelector(".css-1sjubqu")).Click();
             driver.FindElement(By.LinkText("Prijavi se")).Click();
             Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
-            driver.FindElement(By.Name("username")).SendKeys("nepostojeciEmail@gmail.com");
-            driver.FindElement(By.Name("password")).SendKeys("1234");
+
+            driver.FindElement(By.Name("username")).SendKeys(korisnickoIme);
+            driver.FindElement(By.Name("password")).SendKeys(sifra);
             driver.FindElement(By.CssSelector("button[data-v-3de08799]")).Click();
-            Thread.Sleep(2000);
+
+            Thread.Sleep(2000); // Wait for the result
+
+            // Validate that the login page is still open after a failed login attempt
             Assert.That(driver.Url, Is.EqualTo("https://olx.ba/login"));
+
             driver.Close();
         }
     }
